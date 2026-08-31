@@ -1,0 +1,79 @@
+T=0: Full=0 Empty=1 wr_en=0 rd_en=0 data_in=0 data_out=x
+Reset done
+
+----CASE 1: WRITE AND READ ----
+[65000] Write: 10
+T=65000: Full=0 Empty=1 wr_en=1 rd_en=0 data_in=10 data_out=x
+T=75000: Full=0 Empty=1 wr_en=0 rd_en=0 data_in=10 data_out=x
+[85000] Write: 20
+T=85000: Full=0 Empty=1 wr_en=1 rd_en=0 data_in=20 data_out=x
+T=95000: Full=0 Empty=1 wr_en=0 rd_en=0 data_in=20 data_out=x
+[105000] Write: 30
+T=105000: Full=0 Empty=0 wr_en=1 rd_en=0 data_in=30 data_out=x
+T=115000: Full=0 Empty=0 wr_en=0 rd_en=0 data_in=30 data_out=x
+T=119000: Full=0 Empty=0 wr_en=0 rd_en=1 data_in=30 data_out=10
+[133000] Read: 10
+T=133000: Full=0 Empty=0 wr_en=0 rd_en=0 data_in=30 data_out=10
+T=147000: Full=0 Empty=0 wr_en=0 rd_en=1 data_in=30 data_out=20
+[161000] Read: 20
+T=161000: Full=0 Empty=0 wr_en=0 rd_en=0 data_in=30 data_out=20
+T=175000: Full=0 Empty=0 wr_en=0 rd_en=1 data_in=30 data_out=30
+[189000] Read: 30
+T=189000: Full=0 Empty=1 wr_en=0 rd_en=0 data_in=30 data_out=30
+
+---- CASE 2: FILLING FIFO ----
+[245000] Write: 36
+T=245000: Full=0 Empty=1 wr_en=1 rd_en=0 data_in=36 data_out=30
+T=255000: Full=0 Empty=1 wr_en=0 rd_en=0 data_in=36 data_out=30
+[265000] Write: 129
+T=265000: Full=0 Empty=1 wr_en=1 rd_en=0 data_in=129 data_out=30
+T=275000: Full=0 Empty=1 wr_en=0 rd_en=0 data_in=129 data_out=30
+[285000] Write: 9
+T=285000: Full=0 Empty=1 wr_en=1 rd_en=0 data_in=9 data_out=30
+T=287000: Full=0 Empty=0 wr_en=1 rd_en=0 data_in=9 data_out=30
+T=295000: Full=0 Empty=0 wr_en=0 rd_en=0 data_in=9 data_out=30
+[305000] Write: 99
+T=305000: Full=0 Empty=0 wr_en=1 rd_en=0 data_in=99 data_out=30
+T=315000: Full=0 Empty=0 wr_en=0 rd_en=0 data_in=99 data_out=30
+[325000] Write: 13
+T=325000: Full=0 Empty=0 wr_en=1 rd_en=0 data_in=13 data_out=30
+T=335000: Full=0 Empty=0 wr_en=0 rd_en=0 data_in=13 data_out=30
+[345000] Write: 141
+T=345000: Full=0 Empty=0 wr_en=1 rd_en=0 data_in=141 data_out=30
+T=355000: Full=0 Empty=0 wr_en=0 rd_en=0 data_in=141 data_out=30
+[365000] Write: 101
+T=365000: Full=0 Empty=0 wr_en=1 rd_en=0 data_in=101 data_out=30
+T=375000: Full=0 Empty=0 wr_en=0 rd_en=0 data_in=101 data_out=30
+[385000] Write: 18
+T=385000: Full=0 Empty=0 wr_en=1 rd_en=0 data_in=18 data_out=30
+T=395000: Full=1 Empty=0 wr_en=0 rd_en=0 data_in=18 data_out=30
+Full Flag is High
+
+---- CASE 3: EMPTYING FIFO ----
+T=483000: Full=1 Empty=0 wr_en=0 rd_en=1 data_in=18 data_out=36
+[497000] Read: 36
+T=497000: Full=1 Empty=0 wr_en=0 rd_en=0 data_in=18 data_out=36
+T=511000: Full=1 Empty=0 wr_en=0 rd_en=1 data_in=18 data_out=129
+[525000] Read: 129
+T=525000: Full=0 Empty=0 wr_en=0 rd_en=0 data_in=18 data_out=129
+T=539000: Full=0 Empty=0 wr_en=0 rd_en=1 data_in=18 data_out=9
+[553000] Read: 9
+T=553000: Full=0 Empty=0 wr_en=0 rd_en=0 data_in=18 data_out=9
+T=567000: Full=0 Empty=0 wr_en=0 rd_en=1 data_in=18 data_out=99
+[581000] Read: 99
+T=581000: Full=0 Empty=0 wr_en=0 rd_en=0 data_in=18 data_out=99
+T=595000: Full=0 Empty=0 wr_en=0 rd_en=1 data_in=18 data_out=13
+[609000] Read: 13
+T=609000: Full=0 Empty=0 wr_en=0 rd_en=0 data_in=18 data_out=13
+T=623000: Full=0 Empty=0 wr_en=0 rd_en=1 data_in=18 data_out=141
+[637000] Read: 141
+T=637000: Full=0 Empty=0 wr_en=0 rd_en=0 data_in=18 data_out=141
+T=651000: Full=0 Empty=0 wr_en=0 rd_en=1 data_in=18 data_out=101
+[665000] Read: 101
+T=665000: Full=0 Empty=0 wr_en=0 rd_en=0 data_in=18 data_out=101
+T=679000: Full=0 Empty=0 wr_en=0 rd_en=1 data_in=18 data_out=18
+[693000] Read: 18
+T=693000: Full=0 Empty=1 wr_en=0 rd_en=0 data_in=18 data_out=18
+Empty Flag is High
+
+SIMULATION FINISHED
